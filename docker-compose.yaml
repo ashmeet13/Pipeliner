@@ -1,0 +1,24 @@
+version: '3.6'
+
+services:
+  database:
+    build: ./src/setup_database
+    container_name: postgres_raw_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=online_store
+    volumes:
+      - ./docker_volume:/docker_volume
+
+  generator:
+    build: ./src/data_generation
+    container_name: data_generator
+    environment:
+      - POSTGRES_HOST=database
+    volumes:
+      - ./docker_volume:/docker_volume
+    depends_on:
+      - database
