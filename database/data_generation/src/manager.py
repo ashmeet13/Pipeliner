@@ -1,6 +1,7 @@
 import time
 
 import psycopg2
+
 from loguru import logger
 
 

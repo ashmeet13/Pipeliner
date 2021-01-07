@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   database:
-    build: ./src/setup_database
+    build: ./setup_database
     container_name: postgres_raw_database
     ports:
       - "5432:5432"
@@ -14,7 +14,7 @@ services:
       - ./docker_volume:/docker_volume
 
   generator:
-    build: ./src/data_generation
+    build: ./data_generation
     container_name: data_generator
     environment:
       - POSTGRES_HOST=database
