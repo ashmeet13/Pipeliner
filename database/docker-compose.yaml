@@ -18,6 +18,12 @@ services:
     container_name: data_generator
     environment:
       - POSTGRES_HOST=database
+      - DATABASE=online_store
+      - PSQL_USERNAME=postgres
+      - PSQL_PASSWORD=postgres
+      - BACKFILL_DAYS=1
+      - VARIABLE_INSERT_DELAY_START=5
+      - VARIABLE_INSERT_DELAY_STOP=10
     volumes:
       - ./docker_volume:/docker_volume
     depends_on:
