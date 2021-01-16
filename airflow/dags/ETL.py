@@ -9,7 +9,7 @@ from airflow.utils.dates import days_ago
 
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
-default_args = {"owner": "admin"}
+default_args = {"owner": "admin", "email": "alert.email@gmail.com"}
 
 dag = DAG(
     dag_id="simple_etl",

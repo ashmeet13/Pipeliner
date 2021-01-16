@@ -19,8 +19,6 @@ else
   airflow db upgrade
 fi
 
-echo "Starting up Airflow"
+echo "Running Tests"
 
-airflow scheduler &
-airflow webserver --port $AIRFLOW_PORT &
-wait
+pytest tests -v

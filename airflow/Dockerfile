@@ -19,7 +19,15 @@ RUN mkdir $AIRFLOW_HOME
 RUN mkdir $AIRFLOW_HOME/dags
 COPY ./dags/ $AIRFLOW_HOME/dags
 
-COPY /airflow-init.sh /airflow-init.sh
-RUN chmod +x /airflow-init.sh
+RUN mkdir /tests
+COPY ./tests/ tests
+
+COPY ./airflow_init_db.sh /airflow_init_db.sh
+RUN chmod +x /airflow_init_db.sh
+
+RUN /airflow_init_db.sh
+
+COPY ./airflow_start.sh /airflow_start.sh
+RUN chmod +x /airflow_start.sh
 
 ENTRYPOINT [ "/airflow-init.sh" ]
